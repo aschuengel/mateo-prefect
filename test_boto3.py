@@ -42,7 +42,9 @@ async def test() -> None:
     logger = get_run_logger()
     logger.info(f'Tables: {table_names}')
     ids = [send_mateo_message(table_name) for table_name in table_names]
+    logger.info(ids)
     tasks = [wait_for_mateo(id) for id in ids]
+    logger.info(tasks)
     logger.info(f'Tasks: {tasks}')
     await asyncio.gather(*tasks)
     logger.info('All tasks completed')
